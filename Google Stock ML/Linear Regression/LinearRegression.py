@@ -29,7 +29,7 @@ df = df[['Adj. Close','HL_PCT','PCT_change','Adj. Volume']]
 forecast_col = 'Adj. Close'
 df.fillna(-99999, inplace=True)
 
-forecast_out = int(math.ceil(0.01 * len(df)))
+forecast_out = int(math.ceil(0.1 * len(df)))
 print(forecast_out)
 
 df['label'] = df[forecast_col].shift(-forecast_out)
@@ -44,8 +44,8 @@ df['label'] = df[forecast_col].shift(-forecast_out)
 
 x = np.array(df.drop(['label'],1))
 x = preprocessing.scale(x)
-x = x[:-forecast_out]
 x_lately = x[-forecast_out:]
+x = x[:-forecast_out]
 
 df.dropna(inplace=True)
 y = np.array(df['label'])
@@ -55,10 +55,10 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 ##clf = LinearRegression(n_jobs=20)
 ##clf2 = svm.SVR()
 ##clf.fit(x_train, y_train)
-##with open('linearregression.pickle','wb') as f:
+##with open('./Google Stock ML/Linear Regression/linearregression.pickle','wb') as f:
 ##    pickle.dump(clf, f)
 
-pickle_in = open('linearregression.pickle','rb')
+pickle_in = open('./Google Stock ML/Linear Regression/linearregression.pickle','rb')
 clf = pickle.load(pickle_in)
 
 accuracy = clf.score(x_test, y_test)
