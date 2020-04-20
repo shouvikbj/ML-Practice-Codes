@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 accuracies = []
 
 for _ in range(25):
-    df = pd.read_csv('./KNN/breast-cancer-wisconsin.data')
+    df = pd.read_csv('./Breast Cancer Prediction using KNN/breast-cancer-wisconsin.data')
     df.replace('?', -99999, inplace=True)
     df.drop(['id'], 1, inplace=True)
 
