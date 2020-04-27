@@ -27,3 +27,5 @@
 
 (4) As well as SVM model is also developed from scratch using "numpy" and pandas" without any help of "sklearn".
 
+(5) OVR & OVO of 'svm.SVC()' implemented.
+
