@@ -30,11 +30,19 @@
 (5) OVR & OVO of 'svm.SVC()' implemented.
 
 ## Titanic Surviver Prediction using KMeans - 
-(1) This folder contains ML codes that predict Titanic Passangers' Survival Tendency form a given patient details.
+(1) This folder contains ML codes that predict Titanic Passangers' Survival Tendency form a given dataset.
 
 (2) KMeans is used here.
 
 (3) KMeans of "sklearn" is used.
 
 (4) As well as KMeans model is also developed from scratch using "numpy" and pandas" without any help of "sklearn".
+
+## Titanic Survival Prediction using MeanShift Clustering - 
+(1) This folder contains ML codes that predict Titanic Passangers' Survival Rate form a given dataset.
+
+(2) MeanShift is used here.
+
+(3) MeanShift of "sklearn" is used.
+
 

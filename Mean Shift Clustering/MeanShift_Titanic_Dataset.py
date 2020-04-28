@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 style.use('ggplot')
 import numpy as np
-from sklearn.cluster import KMeans
+from sklearn.cluster import MeanShift
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -25,6 +25,7 @@ home.dest Home/Destination
 """
 
 df = pd.read_excel('./KMeans Clustering/titanic.xls')
+original_df = pd.DataFrame.copy(df)
 #print(df.head())
 df.drop(['body','name'], 1, inplace=True)
 #print(df.head())
@@ -64,16 +65,29 @@ x = np.array(df.drop(['survived'], 1).astype(float))
 x = preprocessing.scale(x)
 y = np.array(df['survived'])
 
-clf = KMeans(n_clusters=2)
+clf = MeanShift()
 clf.fit(x)
 
-correct = 0
-for i in range(len(x)):
-    predict_me = np.array(x[i].astype(float))
-    predict_me = predict_me.reshape(-1, len(predict_me))
-    prediction = clf.predict(predict_me)
-    if prediction[0] ==y[i]:
-        correct += 1
+labels = clf.labels_
+cluster_centers = clf.cluster_centers_
 
-print(correct/len(x))
+original_df['cluster_group'] = np.nan
+
+for i in range(len(x)):
+    original_df['cluster_group'].iloc[i] = labels[i]
+
+n_clusters_ = len(np.unique(labels))
+
+
+survival_rates = {}
+for i in range(n_clusters_):
+    temp_df = original_df[ (original_df['cluster_group'] == float(i)) ]
+    survival_cluster = temp_df[ (temp_df['survived'] == 1) ]
+    survival_rate = len(survival_cluster)/len(temp_df)
+    survival_rates[i] = survival_rate
+
+print(survival_rates)
+#print(original_df[ (original_df['cluster_group']==1) ])
+
+
 
