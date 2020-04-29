@@ -45,4 +45,13 @@
 
 (3) MeanShift of "sklearn" is used.
 
+## Deep Learning using TensorFlow - 
+(1) This folder contains files  regarding deep learning models on sentiment analysis.
 
+(2) Creating dataset from a text file, saving that into a pickle, and finally rolling out Deep Neural Network on that dataset for sentiment analysis.
+
+
+
+
+
+## Author - Shouvik Bajpayee.
