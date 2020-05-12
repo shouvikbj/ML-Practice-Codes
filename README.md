@@ -50,6 +50,9 @@
 
 (2) Creating dataset from a text file, saving that into a pickle, and finally rolling out Deep Neural Network on that dataset for sentiment analysis.
 
+## Recurrent Neural Network
+(1) This folder contains implementation of RNN
+
 
 
 
